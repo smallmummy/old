@@ -64,7 +64,7 @@ gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: 8845e8f1669719b121b5                            #生成的clientID
   clientSecret: 1b794a8400998fa2e0ba0bc14e0957d2ef4a6bc1    #生成的clientSecret
-  repo: github.com/smallmummy/smallmummy.github.io    #仓库名称
+  repo: github.com/smallmummy/smallmummy.github.io.git    #仓库名称
   owner: smallmummy    #github用户名
   admin: smallmummy
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
