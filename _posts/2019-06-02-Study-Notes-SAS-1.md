@@ -188,7 +188,7 @@ There are totally 2 parts for Chapter 1 to Chapter 24. Here is the Part One (for
 	```
 	proc sql;     select empid, jobcode, dateofbirth        from sasuser.payrollmaster        where jobcode in (’FA1’,’FA2’)              and dateofbirth < any                 (select dateofbirth                    from sasuser.payrollmaster                    where jobcode=’FA3’);
 	```
-	/> ANY(20，30，40) 大于20即可  
+	\> ANY(20，30，40) 大于20即可  
 	< ANY(20，30，40) 小于40即可  
 	= ANY(20，30，40) 等于20 or 30 or 40  
 18. Non-Correlated Subqueries 和 Correlated Subqueries  
@@ -230,7 +230,7 @@ There are totally 2 parts for Chapter 1 to Chapter 24. Here is the Part One (for
 	      order by salary;
 	```
 20. VALIDATE, 不执行sql，只检查语法，和NOEXEC一样，但位置不一样   
-	在每个select的前面，没有；   
+	在每个select的前面，没有；分号    
 	只作用于紧跟在后面的一个select，如果有多个select，每个select之前都加一个  
 	
 	```
@@ -309,10 +309,14 @@ There are totally 2 parts for Chapter 1 to Chapter 24. Here is the Part One (for
 	from airline.flightdelays as af,work.flightdelays as wf
 	where af.delay> wf.delay
 	```
-6. Outer Joins   
-	LEFT JOIN：在a中没有match的(ab的交集外)+ab的交集
-	RIGHT JOIN：在b中没有match的(ab的交集外)+ab的交集
-	FULL JOIN：在a中没有match的(ab的交集外)+ab的交集+在b中没有match的(ab的交集外)  
+6. Outer Joins  
+ 
+	* 	LEFT JOIN：在a中没有match的(ab的交集外)+ab的交集
+	* 	RIGHT JOIN：在b中没有match的(ab的交集外)+ab的交集
+	* 	FULL JOIN：在a中没有match的(ab的交集外)+ab的交集+在b中没有match的(ab的交集外) 
+
+	![](https://cl.ly/ad144ffb7599/Image%2525202019-06-07%252520at%2525208.12.02%252520%2525E4%2525B8%25258A%2525E5%25258D%252588.png)
+ 
 	用法：
 	
 	```
@@ -322,7 +326,7 @@ There are totally 2 parts for Chapter 1 to Chapter 24. Here is the Part One (for
 	ON join-condition(s)
 	<other clauses>;
 	```
-	outer join只能操作2张表。  
+	outer join(left join/right join/full join)只能操作2张表。  
 	例子：
 	
 	```
@@ -333,6 +337,19 @@ There are totally 2 parts for Chapter 1 to Chapter 24. Here is the Part One (for
 	    two
 	    on one.x=two.x;
 	```
+	
+	left join, 左边表的所有记录，没有匹配上为missing，两个表的var：  
+	![](https://cl.ly/45ce004581d7/Image%2525202019-06-07%252520at%2525208.13.26%252520%2525E4%2525B8%25258A%2525E5%25258D%252588.png)
+	
+	left join, 左边表的所有记录，没有匹配上为missing，指定的var：
+	![](https://cl.ly/fd72a15ab8b8/Image%2525202019-06-07%252520at%2525208.14.46%252520%2525E4%2525B8%25258A%2525E5%25258D%252588.png)
+
+	right join, 右边表的所有记录，没有匹配上为missing，两个表的var，默认右表var在后边：
+	![](https://cl.ly/db5c65426472/Image%2525202019-06-07%252520at%2525208.15.37%252520%2525E4%2525B8%25258A%2525E5%25258D%252588.png)
+	
+	full join, 左表和右表的并集，重复的var只有一次，没有匹配上为missing，默认右表var在后边：
+	![](https://cl.ly/d00b1fd59ab5/Image%2525202019-06-07%252520at%2525208.17.07%252520%2525E4%2525B8%25258A%2525E5%25258D%252588.png)
+	
 7. outer join默认不会覆盖相同的var，这也就是和data set merge的结果不同  
 	如果需要outer join覆盖相同的var，需要COALESCE
 	
@@ -913,7 +930,7 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 	     drop view sasuser.raisev;
 	```
 
-##Chapter 8 - Managing Processing Using PROC SQL
+## Chapter 8 - Managing Processing Using PROC SQL
 
 1. INOBS控制每张表读入的数据, OUTOBS控制每张表输出的数据
 
@@ -928,9 +945,9 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 	      from sasuser.mechanicslevel2;
 	```
 
-2. NUMBER | NONUMBER
+2. NUMBER , NONUMBER
 
-	NUMBER | NONUMBER（默认）控制输出结果中是否包含行号，类似于proc print中的OBS | NOOBS
+	NUMBER,NONUMBER（默认）控制输出结果中是否包含行号，类似于proc print中的OBS , NOOBS
 	
 	```
 	proc sql inobs=10 number;
@@ -938,9 +955,9 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 	      from sasuser.internationalflights;
 	```
 
-3. DOUBLE | NODOUBLE
+3. DOUBLE , NODOUBLE
 
-	DOUBLE | NODOUBLE（默认）输出时使用双空格作为分隔符，html不起作用，listing可以
+	DOUBLE , NODOUBLE（默认）输出时使用双空格作为分隔符，html不起作用，listing可以
 	
 	```
 	proc sql inobs=10 double;
@@ -948,9 +965,9 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 	        from sasuser.internationalflights;
 	```
 
-4. The FLOW | NOFLOW | FLOW=n | FLOW=n m
+4. The FLOW , NOFLOW , FLOW=n , FLOW=n m
 
-	The FLOW | NOFLOW | FLOW=n | FLOW=n m， 在listing下控制每列的宽度，避免某个col太长，导致换行
+	The FLOW , NOFLOW , FLOW=n , FLOW=n m， 在listing下控制每列的宽度，避免某个col太长，导致换行
 	
 	```
 	proc sql inobs=5 flow=10 15;
@@ -960,9 +977,9 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 	       order by pointsused;
 	```
 
-5. STIMER | NOSTIMER（默认）
+5. STIMER , NOSTIMER（默认）
 
-	STIMER | NOSTIMER（默认）默认log中只记录累计的总运行时长  
+	STIMER , NOSTIMER（默认）默认log中只记录累计的总运行时长  
 	STIMER可以详细地记录每个query的运行时长  
 	如果要再proc sql中使用STIMER， 在SAS系统级options的STIMER也要先使用，否则显示的还是累计的总运行时长  
 	
@@ -978,7 +995,7 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 
 6. reset option
 
-	下面的例子中第一个select使用options的outobs，第二个select，因为有reset，除了还使用之前的options（outobs）外，再使用number
+	下面的例子中第一个select使用options的outobs，第二个select，因为有reset，除了还使用之前的options（outobs）外，再使用number (reset语句只对语句后面的option进行追加，之前的参数设置不改变)  
 	
 	```
 	proc sql outobs=5;
@@ -1033,6 +1050,13 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 
 3. 引用不存在的宏变量，warning,但不会中断程序运行。
 
+	例子：  
+	最后第二个put语句输出的还是"—>(!!) outside macro &NEWNAME &SETNAME"，即变量没有解析，log中更有warning，但还继续  
+	
+	```
+	%macro MAKEPGM(NEWNAME, SETNAME); data &NEWNAME;set &SETNAME; run;%put ->(!!) inside macro &NEWNAME &SETNAME; %mend;%MAKEPGM(WORK.NEW, SASHELP.CLASS)%put —>(!!) outside macro &NEWNAME &SETNAME;
+	```
+
 4. 引用错误命名的宏变量。比如，an invalid macro variable name，（不符合命名规则），error， 中断程序运行。
 
 5. 宏变量的赋值
@@ -1047,7 +1071,7 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 	* 即使有单双引号，也算是宏变量值得一部分
 	* 等号后面的字符的开头、拖尾的空格会被自动去掉
 
-6. NOSYMBOLGEN | SYMBOLGEN
+6. NOSYMBOLGEN ， SYMBOLGEN
 
 	设置后，宏变量运行时的值会被显示
 	
@@ -1126,7 +1150,7 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 	```
 	
 	
-	%QUOTE 以及%NRQUOTE 方程会遮盖如下的操作符:  
+	%QUOTE 以及%NRQUOTE 方法会遮盖如下的操作符:  
 	+ - * / < > = ^ ; ~ , # space
 	+ AND OR NOT EQ NE LE LT GE GT IN  
 	同时,会遮盖 '(单引号) 和 "(双引号):配对使用时、单独使用时、或者被前置的%(百分号)标记时。
@@ -1203,7 +1227,7 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 	run;
 	```
 
-22. 使用CALL SYMPUT赋值char
+22. 使用CALL SYMPUT赋值char(在宏解析时不执行，在执行时再执行)  
 
 	使用CALL SYMPUT(‘macro-variable’, ‘text’);
 	
@@ -1266,10 +1290,61 @@ OUTER UNION CORR - 两个表的直接相加；相同的varoverlay
 	```
 	&a --> a2
 	&&a --> &a(begin re-scan) -->  a2
-	&&&a --> &(&&a)-->&(&a with re-scan)->&a2(with re-scan)-> 100
+	&&&a --> &(&a with re-scan)->&a2(with re-scan)-> 100
 	&&a&num -> &(a&num) with re-scan -> &a2 with re-scan ->100
 	```
+	
+	例子：
+	
+	```
+	%let sun=SHINE;	%let shine=MOON;	%let moon=earth;
+	
+	SAS运行log：
+	1167  %put 1,&sun;	1,SHINE
+	1168  %put 2,&&sun;
+	2,SHINE
+	1169  %put 3,&&&sun;
+	3,MOON
+	1170  %put 4,&&&&sun;
+	4,SHINE
+	1171  %put 5,&&&&&sun;
+	5,MOON
+	1172  %put 6,&&&&&&sun;
+	6,MOON
+	1173  %put 7,&&&&&&&sun;
+	7,earth
+	1174  %put 8,&&&&&&&&sun;
+	8,SHINE
+	1175  %put 9,&&&&&&&&&sun;
+	9,MOON
+	1176  %put 10,&&&&&&&&&&sun;
+	10,MOON
+	1177  %put 11,&&&&&&&&&&&sun;
+	11,earth
+	1178  %put 12,&&&&&&&&&&&&sun;
+	12,MOON
+	1179  %put 13,&&&&&&&&&&&&&sun;
+	13,earth
+	1180  %put 14,&&&&&&&&&&&&&&sun;
+	14,earth
+	1181  %put 15,&&&&&&&&&&&&&&&sun;
+	WARNING: Apparent symbolic reference EARTH not resolved.
+	15,&earth
+	1182  %put 16,&&&&&&&&&&&&&&&&sun;
+	16,SHINE
+	1183  %put 17,&&&&&&&&&&&&&&&&&sun;
+	17,MOON
+	```
 
+	解析：  
+	从左到右，依次将&&变为&，如果有落单的，就结合为宏变量，然后re-scan，不断重复此过程。
+	
+	* 	&&&&&sun -> & & &sun -> &&shine -> &(shine) -> moon
+	* 	&&&&&&sun -> & & & sun -> && &sun ->同上->moon
+	* 	&&&&&&&&sun -> & & & & sun -> && && sun -> & & sun -> &&sun -> &(sun) -> shine
+	* 	&&&&&&&&&&&sun -> & & & & & (&sun) ->&& && & (shine) -> & & (&shine) -> & moon -> earth
+	* 	&&&&&&&&&&&&&&&sun -> & & & & & & & (&sun) -> && && && & (shine) -> & & & (&shine) -> && &(moon) -> & earth
+	
 
 27. symget
 
@@ -1384,8 +1459,8 @@ run;
 proc sql;	create view subcnum as		select student_name, student_company, paid		from sasuser.all		where course_number=input(symget(’crsnum’),2.);quit;
 ```
 
-### 5.Using Macro Variables in SCL Programs
-**to do done**
+### 5. Using Macro Variables in SCL Programs
+**to be done**
 
 ### 做错的练习题
 
@@ -1677,16 +1752,35 @@ eg:
 
 4. 然后，再一层一层的结束，每次结束%mend一个宏，就删除一个Local Symbol Table
 
+例子1：  
 
+```
+%let a=cat;%macro animal; 
+	%let a=dog;%mend; 
+%animal%put a is &a;
+```
+解释： 在宏animal里面有对宏变量的赋值，SAS首先查找local table中有没有，发现没有，就去global table中找，最后发现了，赋值成功，最后再open code中的put的结果是dog.
+
+例子2：
+
+```
+%macro trans;	%let type=Airplane;	proc print data=sasuser.activities;		where trans="&type"; 
+	run;	%location(Automobile)	%put type is &type; 
+%mend;%macro location(type); 
+	data _null_;		call symput('type', 'Train'); 
+	run;%mend; 
+%trans
+```
+解释： 首先调用trans，在宏trans中定义宏变量type（因为在global table中没有），在trans的local table中赋值为airplane。然后调用宏location，由于type是宏location的形参，在宏location的local table中是有type的定义的，symput的时候，就把Train赋值给宏location的local table中的type。但在宏trans的local table中的值没有变，还是Airplane。
 
 
 ### 15.相关的日志开关
 用于在MPRINT打印nest宏的log：
-> OPTIONS MPRINTNEST | NOMPRINTNEST;    
+> OPTIONS MPRINTNEST , NOMPRINTNEST;    
 
 
 用于在MLOGIC打印nest宏的log：
-> OPTIONS MLOGICNEST | NOMLOGICNEST;
+> OPTIONS MLOGICNEST , NOMLOGICNEST;
 
 ### 16.宏里面的条件判断
 
@@ -1762,21 +1856,21 @@ IF-THEN...
 eg:
 ![](https://cl.ly/7e0a9f4c2bab/Image%2525202019-05-20%252520at%25252011.57.35%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 
-%eval(&numer/&denom); -- 2/8 = 0.25 eval取整数部分  
-%eval(&numer/&denom*&denom); -- 0  
-%eval(&denom*&numer/&denom); -- 2  
+%eval(&numer/&denom); --> 2/8 = 0.25 eval取整数部分  
+%eval(&numer/&denom\*&denom); --> 0  
+%eval(&denom\*&numer/&denom); --> 2  
 
 eval不能转换为数值，当：  
 
 1. 数值中包含小数点或者E  
 2. SAS date和time型的数值  
 
-%eval(2.4+8); ---  就会报错
+%eval(2.4+8); --->  就会报错
 
 ### 20.%SYSEVALF
 和%EVAL类似，但是可以计算float  
 
-%SYSEVALF(2.4+8) ---  10.4
+%SYSEVALF(2.4+8) --->  10.4
 
 
 ## Chapter 12 - Storing Macro Programs  

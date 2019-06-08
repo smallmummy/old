@@ -15,7 +15,7 @@ tags:
 ## Foreword
 since I had been preparing for SAS Advanced Programmer Exam, I write this study note which I study from the book "SAS Certification Prep Guide - Advance" in my blog, for recording this moments and experience.  
 
-There are totally 2 parts for Chapter 2 to Chapter 24. Here is the Part One (for chapter 13 to chapter 24).
+There are totally 2 parts for Chapter 2 to Chapter 24. Here is the Part Two (for chapter 13 to chapter 24).
 
 ## Chapter 13 - Creating Samples and Indexes
 
@@ -93,7 +93,20 @@ data simple2 (index=(division empid/unique));     set sasuser.empdata;run;
 data composite (index=(Empdiv=(division empid)));     set sasuser.empdata;run;
 ```
 
-### 5.1 相关的日志开关
+### 5.1 执行的顺序
+
+建立 DATA 步视图，DATA 步仅被部分编译,中间代码在指定的 SAS 逻辑库当中存储为 VIEW 成员类型。  
+引用 DATA 步视图:编译器解析中间代码并为主机环境产生可执行代码,生成的代码随后被执行。  
+
+注意:若在 DATA 语句当中指定了其他的数据文件,则当后续的 DATA 或者 PROC 步调用了该视图时 SAS 才会创建这 些数据文件。所以,若想使用此类数据文件,必须先引用 DATA 步视图。  
+
+```
+data _null_ WORK.BAD_DATA / view=WORK.BAD_DATA; set SASUSER.LOOK(keep=Xa Xb Xc);length _Check_ $ 10 ;if Xa=. then _check_=trim(_Check_)!!" Xa" ; if Xb=. then _check_=trim(_Check_)!!" Xb" ; if Xc=. then _check_=trim(_Check_)!!" Xc" ; put Xa= Xb= Xc= _check_= ;run ;
+```
+上述例子中执行的时候，只在 work 下创建了一个名为 temp 的视图,视图中也没有观测。当你双击该视图后,才写入观测,并创建了另一个名为 Error 的数据集。
+
+
+### 5.2 相关的日志开关
 显示操作Index等相关操作的日志，like创建Index、Merge、Sort
 并且能够在log中提示Index may Help,是否要创建Index
 
@@ -102,7 +115,7 @@ data composite (index=(Empdiv=(division empid)));     set sasuser.empdata;run;
 OPTIONS MSGLEVEL= N|I;
 ```
 
-### 5.2 不需要Index的时候
+### 5.3 不需要Index的时候
 
 
 1. with a subsetting IF statement in a DATA step
@@ -184,6 +197,15 @@ proc datasets library=sasuser nolist;     copy out=work;
 注：
 >If you copy and paste a data set in either SAS Explorer or in SAS Enterprise Guide, a new index file is automatically created for the new data file.
 
+注意：  
+但是如果是在data步中通过set的方式来copy数据，是不会有index过来的。  
+
+例子：下面的数据集test原本是有index的，但通过set的方式，index会被删除了（不会copy过来）    
+
+```
+data WORK.TEST;set WORK.TEST(keep=Id Var_1 Var_2 rename=(Id=Id_Code)); Total=sum(Var_1, Var_2);run;
+```
+
 
 ### 10. Renaming Data Sets
 
@@ -238,7 +260,7 @@ INFILE file-specification FILEVAR= variable;
 ```
 COMPRESS(source, <characters-to-remove>);
 ```
-eg:
+eg:下面的例子去掉空格和小数点。  
 
 ```
 compress("123.456 789"," .");
@@ -291,8 +313,6 @@ PROC APPEND BASE=SAS-data-set DATA=SAS-data-set;RUN;
 ```
 PROC APPEND BASE=SAS-data-set DATA=SAS-data-set force;RUN;
 ```
-
-<br/>  
 
 * 如果某个var的长度在BASE中短，在DATA中长，也需要用FORCE，并且合并后，DATA中的那个var会被trunc掉。
 
@@ -349,7 +369,9 @@ data mylib.employees_new;	array birthdates{1001:1004} _temporary_ (’01JAN1963
 * 使用自定义Format：
 
 ```
-proc format;	value birthdate 1001 = ’01JAN1963’								1002 = ’08AUG1946’								1003 = ’23MAR1950’								1004 = ’17JUN1973’;run;data mylib.employees_new;	set mylib.employees;                   	Birthdate=input(put(IDnum,birthdate.),date9.);run;
+proc format;	value birthdate 
+		1001 = ’01JAN1963’		1002 = ’08AUG1946’		1003 = ’23MAR1950’		1004 = ’17JUN1973’;run;data mylib.employees_new;	set mylib.employees;
+	Birthdate=input(put(IDnum,birthdate.),date9.);run;
 ```
 
 ### 2. 使用Data Merge：  
@@ -809,7 +831,7 @@ display指定的format-name：
 libname library ’c:\sas\newfmt’;proc format lib=library fmtlib;	select $routes;run;
 ```
 
-* format也是放在CAT里面的，所有和dataset一样，可以使用PROC CATALOG操作：  
+format也是放在CAT里面的，所有和dataset一样，可以使用PROC CATALOG操作：  
 
 ```
 PROC CATALOG CATALOG=libref.catalog;	CONTENTS <OUT=SAS-data-set>; 
@@ -819,7 +841,7 @@ PROC CATALOG CATALOG=libref.catalog;	CONTENTS <OUT=SAS-data-set>;
 	DELETE entry-name.entry-type(s);RUN;QUIT;
 ```
 
-* 修改dataset中已经绑定的format
+修改dataset中已经绑定的format
 
 ```
 PROC DATASETS LIB=SAS-library <NOLIST>;	MODIFY SAS-data-set; 
