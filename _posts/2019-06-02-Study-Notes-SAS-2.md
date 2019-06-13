@@ -101,7 +101,11 @@ data composite (index=(Empdiv=(division empid)));     set sasuser.empdata;run;
 注意:若在 DATA 语句当中指定了其他的数据文件,则当后续的 DATA 或者 PROC 步调用了该视图时 SAS 才会创建这 些数据文件。所以,若想使用此类数据文件,必须先引用 DATA 步视图。  
 
 ```
-data _null_ WORK.BAD_DATA / view=WORK.BAD_DATA; set SASUSER.LOOK(keep=Xa Xb Xc);length _Check_ $ 10 ;if Xa=. then _check_=trim(_Check_)!!" Xa" ; if Xb=. then _check_=trim(_Check_)!!" Xb" ; if Xc=. then _check_=trim(_Check_)!!" Xc" ; put Xa= Xb= Xc= _check_= ;run ;
+data _null_ WORK.BAD_DATA / view=WORK.BAD_DATA; 
+	set SASUSER.LOOK(keep=Xa Xb Xc);	length _Check_ $ 10 ;	if Xa=. then _check_=trim(_Check_)!!" Xa" ; 
+	if Xb=. then _check_=trim(_Check_)!!" Xb" ; 
+	if Xc=. then _check_=trim(_Check_)!!" Xc" ; 
+	put Xa= Xb= Xc= _check_= ;run ;
 ```
 上述例子中执行的时候，只在 work 下创建了一个名为 temp 的视图,视图中也没有观测。当你双击该视图后,才写入观测,并创建了另一个名为 Error 的数据集。
 
