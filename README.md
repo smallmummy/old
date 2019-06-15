@@ -8,6 +8,7 @@
 jekyll + github  
 有需要的同学可以fork自己的版本，用于搭建基于github的blog。  
 教程链接：
+[教程](https://github.com/smallmummy/smallmummy.github.io/blob/master/tutorials.md)
 
 ### 参考
 
