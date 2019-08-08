@@ -6,6 +6,7 @@ date:       2018-02-01
 author:     Vincent C
 header-img: img/post-bg-hacker.jpg
 catalog: true
+stickie: true
 tags:
     - cryptocurrency
     - arbitrage

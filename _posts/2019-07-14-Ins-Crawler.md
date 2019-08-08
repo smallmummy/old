@@ -6,6 +6,7 @@ date:       2019-07-14
 author:     Vincent C
 header-img: img/post-bg-coffee.jpeg
 catalog: true
+stickie: true
 tags:
     - Crawler
 ---  
