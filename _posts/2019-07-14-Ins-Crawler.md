@@ -12,6 +12,7 @@ tags:
 
 
 # The Experience of Scraping Instagram (Crawler)
+![](https://cl.ly/099cf80f4d18/web_scraping.png)
 
 ## Foreword
 
@@ -30,6 +31,7 @@ More discussion can refer to:
 
 * [Legal and Ethical Aspects of Data Scraping](https://www.datahen.com/legal-ethical-aspects-data-scraping/)
 * [Is scraping and collect Instagram data legal? Is it legal due to the contractual terms?](https://www.quora.com/Is-scraping-and-collect-Instagram-data-legal-Is-it-legal-due-to-the-contractual-terms)
+* [美国数据爬虫相关案例判决梳理](https://www.secrss.com/articles/9746)
 
 
 
