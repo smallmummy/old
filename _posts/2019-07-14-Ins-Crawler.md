@@ -19,6 +19,20 @@ There are several articles on the internet to teach you to scrape data from many
 
 The idea which drove me to do this was from an article on Wechat which described how to scrape massive poem data and analyze them, finally output a diagram shown a relationship between those poets. At that time, I had the idea to do similar things on SNS, and output some figures which can show the relationship among people, and then I chose Instagram as the target. There is one more reason why I decided to choose Instagram: the considerable pictures in that can make me practice some AI project, like machine learning and image identification.
 
+### About the Legal and Ethical Aspects of Data Scraping
+This is a hard question. We need to consider this behavior from many aspects. I defend for myself as:
+
+1. Scraping in itself is not illegal.
+1. The data I scraped is from Instagram public page, which everyone can access.
+1. The method I scraped the data is based on Selenium, which emulate the real Chrome browser behaviour. It won't increase load to server.
+
+More discussion can refer to:
+
+* [Legal and Ethical Aspects of Data Scraping](https://www.datahen.com/legal-ethical-aspects-data-scraping/)
+* [Is scraping and collect Instagram data legal? Is it legal due to the contractual terms?](https://www.quora.com/Is-scraping-and-collect-Instagram-data-legal-Is-it-legal-due-to-the-contractual-terms)
+
+
+
 ## 1. Introduction
 First of all, I have to mention this is not the proper timing for us to scrape massive data from Instagram, and there are the reasons:
 
@@ -55,8 +69,9 @@ At last, I have to remind you I am just a beginner who enter this area recently,
 ### 2.2 Flow:
 
 ![](https://cl.ly/0834dd309d85/ins%252520crawler%252520flow.png)
-	<center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
+<center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
 	Flow illustration</div></center>
+
 
 #### 2.2.1 Main Frame
 
@@ -82,7 +97,7 @@ At last, I have to remind you I am just a beginner who enter this area recently,
 This is the easiest part among the three crawling (profile, Followers & Following and posts) because all you want is in the page source:    
 
 ![](https://cl.ly/188f6ac71467/%2525E5%2525B1%25258F%2525E5%2525B9%252595%2525E5%2525BF%2525AB%2525E7%252585%2525A7%2525202019-07-25%252520%2525E4%2525B8%25258B%2525E5%25258D%2525882.35.44.png)
-	<center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
+<center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
 	content in page source</div></center>
 	
 You can quickly locate using Regular Express in one part of javascript in page source. 
@@ -116,7 +131,7 @@ There is too much information, including, but not limited to:
 As I plan to crawl the data by emulating the real operation in Chrome, I thought the process is not complicated (however later it proved I'm wrong), and it likes the following GIF shown:
 
 ![](https://cl.ly/66e5bd7e5371/Screen%252520Recording%2525202019-07-25%252520at%25252003.02%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.gif)
-	<center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
+<center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
 	browse Follow/Followedby data manually</div></center>
 
 **Brief Process:**
@@ -149,7 +164,7 @@ There are two ways I found and both work:
 I found the 2nd method is secure, and the real operation likes the following GIF shown:
 
 ![](https://cl.ly/65bbcee5a6d7/Screen%252520Recording%2525202019-07-25%252520at%25252003.22%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.gif)
-	<center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
+<center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
 	browse posts data manually</div></center>
 
 **Brief Process:**
