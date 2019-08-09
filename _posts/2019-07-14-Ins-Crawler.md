@@ -47,7 +47,7 @@ First of all, I have to mention this is not the proper timing for us to scrape m
 	
 	![](https://cl.ly/0a6c3faa77ac/Image%2525202019-07-24%252520at%2525204.42.17%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 	<center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-	screenshot from Instragram</div></center>
+	Figure: screenshot from Instragram</div></center>
 
 2. Please notice the “huge data” in my preceding mention. If your target is just downloaded few pictures or comment of a specific user or like some individual posts automatically in real-time, then there are several codes which can perform your requirement in Github, like a bot. But if you aim to scrape massive data from huge users including their Followers or Following or their posts, that’s colossal data which require you seek a smart and efficient method to get under the current situation.
 
@@ -73,7 +73,7 @@ At last, I have to remind you I am just a beginner who enter this area recently,
 
 ![](https://cl.ly/0834dd309d85/ins%252520crawler%252520flow.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-	Flow illustration</div></center>
+	Figure: Flow illustration</div></center>
 
 
 #### 2.2.1 Main Frame
@@ -101,7 +101,7 @@ This is the easiest part among the three crawling (profile, Followers & Followin
 
 ![](https://cl.ly/188f6ac71467/%2525E5%2525B1%25258F%2525E5%2525B9%252595%2525E5%2525BF%2525AB%2525E7%252585%2525A7%2525202019-07-25%252520%2525E4%2525B8%25258B%2525E5%25258D%2525882.35.44.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-	content in page source</div></center>
+	Figure: content in page source</div></center>
 	
 You can quickly locate using Regular Express in one part of javascript in page source. 
 There is too much information, including, but not limited to:
@@ -135,7 +135,7 @@ As I plan to crawl the data by emulating the real operation in Chrome, I thought
 
 ![](https://cl.ly/66e5bd7e5371/Screen%252520Recording%2525202019-07-25%252520at%25252003.02%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.gif)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-	browse Follow/Followedby data manually</div></center>
+	Figure: browse Follow/Followedby data manually</div></center>
 
 **Brief Process:**
 
@@ -168,7 +168,7 @@ I found the 2nd method is secure, and the real operation likes the following GIF
 
 ![](https://cl.ly/65bbcee5a6d7/Screen%252520Recording%2525202019-07-25%252520at%25252003.22%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.gif)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-	browse posts data manually</div></center>
+	Figure: browse posts data manually</div></center>
 
 **Brief Process:**
 
@@ -207,7 +207,7 @@ I thought this part is simple until Instagram request to verify my account as In
 ![](https://cl.ly/d825e1d6c1c4/Image%2525202019-07-25%252520at%2525204.09.14%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-flow of Login</div></center>
+Figure: flow of Login</div></center>
 
 **Code for login:**
 
@@ -382,13 +382,13 @@ I attempted many different methods in this part, and optimize the efficiency con
 
 ![](https://cl.ly/6bd76da580ea/Image%2525202019-07-26%252520at%25252010.58.08%252520%2525E4%2525B8%25258A%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-flow of scrolling and scraping</div></center>
+Figure: flow of scrolling and scraping</div></center>
 
 **Illustration**
 
 ![](https://cl.ly/8b7ea19085e4/%2525E5%2525B1%25258F%2525E5%2525B9%252595%2525E5%2525BF%2525AB%2525E7%252585%2525A7%2525202019-07-26%252520%2525E4%2525B8%25258A%2525E5%25258D%25258811.14.20.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Illustration: how Instagram load new data</div></center>
+Figure: how Instagram load new data</div></center>
 
 What we need to get primarily is the frame of the popup window, then fetch all current data. In the first batch, there will be a list which consists 12 Follow data loaded firstly, then scroll down and get the new data, until all finish.
 
@@ -521,7 +521,7 @@ That method will skip the judgment process for checking duplicated data, and the
 
 ![](https://cl.ly/9fa8aa796b2e/Image%2525202019-07-26%252520at%2525202.24.57%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Flow of scrolled then one-off scraping</div></center>
+Figure: Flow of scrolled then one-off scraping</div></center>
 
 **Code:**
 
@@ -652,7 +652,7 @@ To reproduce the error, I have to switch headless mode to head Chrome, and check
 
 ![](https://cl.ly/79b4a44e7920/%2525E5%2525B1%25258F%2525E5%2525B9%252595%2525E5%2525BF%2525AB%2525E7%252585%2525A7%2525202019-07-26%252520%2525E4%2525B8%25258B%2525E5%25258D%2525883.24.27.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Tab "network" in Chrome Develop Mode</div></center>
+Figure: Tab "network" in Chrome Develop Mode</div></center>
 
 Before I use 0.8 seconds of interval waiting time for each scrolling down, after each scrolling down, another new 12 elements will be loaded, namely, totally invoke 200 times API for loading (12*200 = 2,400).
 
@@ -660,7 +660,7 @@ Instagram set the rate limit, even for normal browser, I found that in Instagram
 
 ![](https://cl.ly/4cdebe203853/Image%2525202019-07-26%252520at%2525203.49.34%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Rate limit from official</div></center>
+Figure: Rate limit from official</div></center>
 
 That 200 limit is for Instagram Graph API, well, I don't think the rate limit for normal browsing is 200 per hour because after I change the interval waiting time to 4 seconds, my program finished scraping 6K data no more than 35 minutes:
 
@@ -679,7 +679,7 @@ And I don't think it works if I feed more memory to Selenium, as the CloudWatch 
 
 ![](https://cl.ly/aea9ba55d68e/%2525E5%2525B1%25258F%2525E5%2525B9%252595%2525E5%2525BF%2525AB%2525E7%252585%2525A7%2525202019-07-26%252520%2525E4%2525B8%25258B%2525E5%25258D%2525884.23.58.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-AWS CloudWatch</div></center>
+Figure: AWS CloudWatch</div></center>
 
 After I reviewed my code again, I found there are many places that need to be improved if I obey these following principles:
 
@@ -688,7 +688,7 @@ After I reviewed my code again, I found there are many places that need to be im
 I early on use 3 Selenium operation in one iteration:
 ![](https://cl.ly/7bbacb1ba3d9/%2525E5%2525B1%25258F%2525E5%2525B9%252595%2525E5%2525BF%2525AB%2525E7%252585%2525A7%2525202019-07-26%252520%2525E4%2525B8%25258B%2525E5%25258D%2525885.53.25.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-3 Selenium operation in one iteration</div></center>
+Figure: 3 Selenium operation in one iteration</div></center>
 
 1. Locate the frame, then I know how much data were already loaded, which can be used for checking whether all Follow data were loaded.
 1. Locate the last item for scrolling down later
@@ -749,7 +749,7 @@ Each scrolling down could load 12 items, then if load 6K data completely, need a
 the performance figure:
 ![](https://cl.ly/8bdbf9696b5a/Image%2525202019-07-26%252520at%2525205.11.55%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Performance Contrast</div></center>
+Figure: Performance Contrast</div></center>
 
 As mentioned above, when you try to locate or operate, the performance of JS is better than others.
 
@@ -767,7 +767,7 @@ last_text_temp = ele_last_temp._id
 
 ![](https://cl.ly/c7146ef11a47/Image%2525202019-07-26%252520at%2525208.44.20%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Performance Contrast After Optimization</div></center>
+Figure: Performance Contrast After Optimization</div></center>
 
 Then I found there barely is lag when performing Selenium operation.
 
@@ -784,7 +784,7 @@ What I want is scroll the content in the popup window, and make Instagram reload
 
 ![](https://cl.ly/0739160783f8/Image%2525202019-07-26%252520at%2525209.12.31%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Flow Chart</div></center>
+Figure: Flow Chart</div></center>
 
 **Code:**
 
@@ -839,7 +839,7 @@ There is a trick in the new popup window which would confuse you about the real 
 
 ![](https://cl.ly/620508d12b1a/%2525E5%2525B1%25258F%2525E5%2525B9%252595%2525E5%2525BF%2525AB%2525E7%252585%2525A7%2525202019-07-27%252520%2525E4%2525B8%25258A%2525E5%25258D%2525888.46.59.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Illustration about Height</div></center>
+Figure: Illustration about Height</div></center>
 
 
 As you can see from the above figure, the class "PZuss" is the element where store the information of  Follow or Follower; however, it cannot be scrolled down. I think there is no attribute in it.
@@ -855,7 +855,7 @@ It's evident if you use Chrome Develop mode to inspect that you will find the ma
 
 ![](https://cl.ly/af445b92cb11/1111.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-competed content under the frame</div></center>
+Figure: competed content under the frame</div></center>
 
 As the above shown, what we need is just the first part, and the real height is 552, the return height as 2587 is the total height which includes the part that Instagram suggests the people you may know.
 
@@ -870,7 +870,7 @@ After I tried in Chrome and found only the initial height is not the real one. A
 
 ![](https://cl.ly/0dff73873320/%2525E5%2525B1%25258F%2525E5%2525B9%252595%2525E5%2525BF%2525AB%2525E7%252585%2525A7%2525202019-07-23%252520%2525E4%2525B8%25258B%2525E5%25258D%25258812.03.25.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-debug the height issue</div></center>
+Figure: debug the height issue</div></center>
 
 
 #### 3.3.6 Fetch data by find_element or page source
@@ -879,7 +879,7 @@ Since I separate the reloading/scrolling data and fetch data, then I consider th
 
 ![](https://cl.ly/3b262438b549/Image%2525202019-07-27%252520at%2525209.56.38%252520%2525E4%2525B8%25258A%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Structure</div></center>
+Figure: Structure</div></center>
 
 In the beginning, I still use the original way to fetch all the data which were already loaded in Selenium: locate the frame again, then Selenium will return all data under that frame, and then what left need I do is elements traversal for fetching.
 
@@ -1120,7 +1120,7 @@ it's convenient if you use Chrome Develope mode to get it:
 
 ![](https://cl.ly/d7dc4d364827/Screen%252520Recording%2525202019-07-27%252520at%25252011.47%252520%2525E4%2525B8%25258A%2525E5%25258D%252588.gif)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-locate element under the Chrome develop mode</div></center>
+Figure: locate element under the Chrome develop mode</div></center>
 
 ### 4.4 the impact to the server due to the head/headless or Chrome Develope Mode 
 
@@ -1137,7 +1137,7 @@ However, it depends on server behavior
 
 ![](https://cl.ly/9fdeed45e8a2/Image%2525202019-07-27%252520at%2525203.39.47%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-sample: changes due to headless mode</div></center>
+Figure: changes due to headless mode</div></center>
 
 **My suggestions:**
 
@@ -1164,7 +1164,7 @@ And when I test the code in head mode, it works. But after I open Develop Mode i
 
 ![](https://cl.ly/effb033cef49/Image%2525202019-07-27%252520at%2525203.52.03%252520%2525E4%2525B8%25258B%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
-Sample: Develop Mode changes the structure</div></center>
+Figure: Develop Mode changes the structure</div></center>
 
 ### 4.5 Struggle with the Hunger Memory Beast
 
