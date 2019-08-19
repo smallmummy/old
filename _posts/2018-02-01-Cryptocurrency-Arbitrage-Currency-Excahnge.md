@@ -179,7 +179,7 @@ Figure: Program Flow</div></center>
 
 ## 5. Monitoring Graphs
 
-since I chose the mode two, then I developed the programme and saved the value into DB, and displayed in ZABBIX like this:
+Since I chose the mode two, then I developed the programme and saved the value into DB, and displayed in ZABBIX like this:
 
 ![](https://cl.ly/2acd949cc66e/Image%2525202019-06-25%252520at%25252010.53.49%252520%2525E4%2525B8%25258A%2525E5%25258D%252588.png)
 <center><div style="border-bottom: 1px solid #d9d9d9;display: inline-block;color: #999;">
