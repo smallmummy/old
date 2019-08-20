@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      Cryptocurrency Arbitrage with Currency Exchange
-subtitle:   seek the arbitrage chances between crypto and triditional currency
+title:      Arbitrage Model with Cryptocurrency and Currency Exchange
+subtitle:   the model to seek the arbitrage chances between cryptocurrency and triditional currency
 date:       2018-02-01
 author:     Vincent C
 header-img: img/post-bg-hacker.jpg
@@ -12,7 +12,7 @@ tags:
     - arbitrage
 ---  
   
-# Cryptocurrency Arbitrage & Currency Exchange
+# Arbitrage Model with Cryptocurrency and Currency Exchange
 
 ## Foreword
 
@@ -68,35 +68,45 @@ Figure: process of inverse arbitrage</div></center>
 	$$ M_{CNY} $$
 
 1. The asking price in exchanges of China, means you need to use CNY (Chinese currency) to buy BTC  
+
 	$$ P\_ASK_{china} $$  
 
 1. The exchange fee when you trade in China:
+
 	$$ Fee_{china} $$
 
 1. after trade in exchanges of China, the BTC you got is:
+
 	$$ \frac{M_{CNY}}{P\_ASK_{china}} * (1-Fee_{china}) $$
 
 1. then you need to transfer the BTC which you bought in China to exchange of Indonesia to sell it. In this step, you need to pay the fee of transferring, which is with the settlement of BTC.  
 
 	we mark the fee of transferring is:
+	
 	$$ Fee_{trans} $$
 
 1. after transfer in , the amount in your exchanges of Indonesia is:
+
 	$$ \frac{M_{CNY}}{P\_ASK_{china}} * (1-Fee_{china}) - Fee_{trans}$$  
     
 1. the price of bidding in exchanges of Indonesia:
+
 	$$ P\_BID_{indo}$$    
 
 1. the IDR (Indonesia currency) you got after sold:
+
 	$$ (\frac{M_{CNY}}{P\_ASK_{china}} * (1-Fee_{china}) - Fee_{trans})*P\_BID_{indo} $$  
 
 1. the fee of withdrawal in exchanges of Indonesia:
+
 	$$ Fee_{withindo} $$
 
 1. the IDR you got in your bank after you withdraw the IDR from exchanges of Indonesia, we marked this amount as:
+
 	$$ M_{IDR} $$
 
 	then it should be:
+	
 	$$ M_{IDR} = (\frac{M_{CNY}}{P\_ASK_{china}} * (1-Fee_{china}) - Fee_{trans})*P\_BID_{indo}*(1-Fee_{withindo}) $$  
 
 1. until this step, you already accomplish the exchange from CNY to IDR via BTC trading.
@@ -104,10 +114,12 @@ Figure: process of inverse arbitrage</div></center>
     now we need to consider exchange IDR back to CNY to complete the whole arbitrage processes if there is any benefit space.  
 
 	the ask price of Bank which can help us exchange IDR back to CNY. 
+	
 	$$ Bank_{ask} $$
 
 
 1. the amount of CNY which was exchanged from IDR is:
+
 	$$ \frac{M_{IDR}}{Bank_{ask}} $$
 
 1. if the preceding amount is greater than our initial amount of CNY, that means there is profit:
